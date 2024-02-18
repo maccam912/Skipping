@@ -1,0 +1,4 @@
+android/
+Dist/
+# Godot 4+ specific ignores
+.godot/

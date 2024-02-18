@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://co68phrdmy54g"]
+
+[node name="Hack" type="Node2D"]
+
+[node name="LeftHack" type="Polygon2D" parent="."]
+color = Color(0.262745, 0.262745, 0.262745, 1)
+polygon = PackedVector2Array(-76, 203, -228, 203, -228, 0, -76, 0)
+
+[node name="RightHack" type="Polygon2D" parent="."]
+color = Color(0.262745, 0.262745, 0.262745, 1)
+polygon = PackedVector2Array(76, 203, 228, 203, 228, 0, 76, 0)

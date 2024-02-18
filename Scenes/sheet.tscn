@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=3 uid="uid://duaqcpmq8xny8"]
+
+[ext_resource type="PackedScene" uid="uid://bfywihhyi2n5o" path="res://Scenes/house.tscn" id="1_k4f38"]
+[ext_resource type="PackedScene" uid="uid://co68phrdmy54g" path="res://Scenes/hack.tscn" id="2_lk6mo"]
+
+[sub_resource type="Gradient" id="Gradient_gcyyw"]
+colors = PackedColorArray(0.470076, 0.470076, 0.470076, 1, 0.851769, 0.851769, 0.851769, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v537h"]
+frequency = 0.045
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pj753"]
+color_ramp = SubResource("Gradient_gcyyw")
+noise = SubResource("FastNoiseLite_v537h")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftmth"]
+size = Vector2(622, 47512)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jk21j"]
+size = Vector2(6464, 1097)
+
+[node name="Sheet" type="Node2D"]
+
+[node name="Ice" type="Polygon2D" parent="."]
+texture_repeat = 2
+color = Color(0.760784, 0.760784, 0.760784, 1)
+texture = SubResource("NoiseTexture2D_pj753")
+polygon = PackedVector2Array(2375, 22860, -2375, 22860, -2375, -22860, 2375, -22860)
+metadata/_edit_lock_ = true
+
+[node name="NorthHouse" parent="." instance=ExtResource("1_k4f38")]
+position = Vector2(0, -17373.5)
+metadata/_edit_lock_ = true
+
+[node name="SouthHouse" parent="." instance=ExtResource("1_k4f38")]
+position = Vector2(0, 17373.5)
+metadata/_edit_lock_ = true
+
+[node name="CenterLine" type="Polygon2D" parent="."]
+color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+polygon = PackedVector2Array(5, 22860, -5, 22860, -5, -22860, 5, -22860)
+metadata/_edit_lock_ = true
+
+[node name="NorthLine" type="Polygon2D" parent="."]
+color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+polygon = PackedVector2Array(2375, -17378.5, -2375, -17378.5, -2375, -17368.5, 2375, -17368.5)
+metadata/_edit_lock_ = true
+
+[node name="NorthBackLine" type="Polygon2D" parent="."]
+color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+polygon = PackedVector2Array(2375, -19207.5, -2375, -19207.5, -2375, -19197.5, 2375, -19197.5)
+metadata/_edit_lock_ = true
+
+[node name="SouthLine" type="Polygon2D" parent="."]
+color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+polygon = PackedVector2Array(2375, 17378.5, -2375, 17378.5, -2375, 17368.5, 2375, 17368.5)
+metadata/_edit_lock_ = true
+
+[node name="SouthBackLine" type="Polygon2D" parent="."]
+color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+polygon = PackedVector2Array(2375, 19207.5, -2375, 19207.5, -2375, 19197.5, 2375, 19197.5)
+metadata/_edit_lock_ = true
+
+[node name="NorthHogLine" type="Polygon2D" parent="."]
+color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+polygon = PackedVector2Array(2375, -10747.5, -2375, -10747.5, -2375, -10667.5, 2375, -10667.5)
+metadata/_edit_lock_ = true
+
+[node name="SouthHogLine" type="Polygon2D" parent="."]
+color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+polygon = PackedVector2Array(2375, 10747.5, -2375, 10747.5, -2375, 10667.5, 2375, 10667.5)
+metadata/_edit_lock_ = true
+
+[node name="NorthHack" parent="." instance=ExtResource("2_lk6mo")]
+position = Vector2(0, -21031)
+metadata/_edit_lock_ = true
+
+[node name="SouthHack" parent="." instance=ExtResource("2_lk6mo")]
+position = Vector2(0, 21031)
+rotation = 3.14159
+
+[node name="Collider" type="StaticBody2D" parent="."]
+
+[node name="EastWall" type="CollisionShape2D" parent="Collider"]
+position = Vector2(2686, -10)
+shape = SubResource("RectangleShape2D_ftmth")
+
+[node name="WestWall" type="CollisionShape2D" parent="Collider"]
+position = Vector2(-2688, 1)
+shape = SubResource("RectangleShape2D_ftmth")
+
+[node name="SouthWall" type="CollisionShape2D" parent="Collider"]
+position = Vector2(0, 23417)
+shape = SubResource("RectangleShape2D_jk21j")
+
+[node name="NorthWall" type="CollisionShape2D" parent="Collider"]
+position = Vector2(-4, -23416)
+shape = SubResource("RectangleShape2D_jk21j")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfsqumeyh8uti"]
+
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_b7mgx"]
+[ext_resource type="PackedScene" uid="uid://duaqcpmq8xny8" path="res://Scenes/sheet.tscn" id="1_rvy6o"]
+[ext_resource type="PackedScene" uid="uid://b024wi0mass6l" path="res://Scenes/debug_menu.tscn" id="3_5p2vt"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_b7mgx")
+
+[node name="Sheet" parent="." instance=ExtResource("1_rvy6o")]
+
+[node name="Stones" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.09, 0.09)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="Gui" parent="Camera2D/CanvasLayer" instance=ExtResource("3_5p2vt")]
